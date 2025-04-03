@@ -1,7 +1,14 @@
-.grid {
-  display: flex;
+.gridContainer {
+  position: relative;
   width: 100%;
   margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   padding-bottom: 0.5rem;
 }
 
@@ -11,6 +18,58 @@
   flex-wrap: nowrap;
   margin-bottom: 1rem;
   height: 180px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gridRow::-webkit-scrollbar {
+  display: none;
+}
+
+.gridRow:hover::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+
+.gridRow:hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gridRow:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.gridRow:hover {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.gridContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40px;
+  background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gridContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
 }
 
 .gifItem {
