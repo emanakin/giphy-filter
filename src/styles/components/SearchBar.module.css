@@ -33,7 +33,6 @@
   overflow-y: auto;
   background-color: var(--input-bg);
   border-radius: 8px;
-  z-index: 20;
   border: 2px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
