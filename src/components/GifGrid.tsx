@@ -2,57 +2,49 @@
 
 import { useGifs } from "@/context/GifContext";
 import styles from "@/styles/components/GifGrid.module.css";
-import Image from "next/image";
+import GifCard from "@/components/GifCard";
 
 export default function GifGrid() {
   const { gifs, loading, error } = useGifs();
 
-  if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
-  }
+  const placeholders = Array(20).fill(null);
 
   if (error) {
     return <div className={styles.error}>{error}</div>;
   }
 
-  if (gifs.length === 0) {
+  if (!loading && gifs.length === 0) {
     return <div className={styles.noResults}>No GIFs found</div>;
   }
 
-  const firstRowGifs = gifs.slice(0, Math.min(gifs.length, 10));
-  const secondRowGifs = gifs.slice(10, Math.min(gifs.length, 20));
+  const firstRowGifs = loading
+    ? placeholders.slice(0, 10)
+    : gifs.slice(0, Math.min(gifs.length, 10));
+  const secondRowGifs = loading
+    ? placeholders.slice(10, 20)
+    : gifs.slice(10, Math.min(gifs.length, 20));
 
   return (
     <div className={styles.gridContainer}>
       <div className={styles.grid}>
         <div className={styles.gridRow}>
-          {firstRowGifs.map((gif) => (
-            <div key={gif.id} className={styles.gifItem}>
-              <Image
-                src={gif.images.fixed_height.url}
-                alt={gif.title}
-                width={180}
-                height={180}
-                unoptimized
-                className={styles.gifImage}
-              />
-            </div>
+          {firstRowGifs.map((gif, index) => (
+            <GifCard
+              key={gif?.id || `loading-1-${index}`}
+              gif={gif}
+              isLoading={loading}
+            />
           ))}
         </div>
 
-        {secondRowGifs.length > 0 && (
+        {(loading || secondRowGifs.length > 0) && (
           <div className={styles.gridRow}>
-            {secondRowGifs.map((gif) => (
-              <div key={gif.id} className={styles.gifItem}>
-                <Image
-                  src={gif.images.fixed_height.url}
-                  alt={gif.title}
-                  width={180}
-                  height={180}
-                  unoptimized
-                  className={styles.gifImage}
-                />
-              </div>
+            {secondRowGifs.map((gif, index) => (
+              <GifCard
+                key={gif?.id || `loading-2-${index}`}
+                gif={gif}
+                isLoading={loading}
+              />
             ))}
           </div>
         )}

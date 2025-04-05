@@ -87,15 +87,6 @@
   object-fit: cover;
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 180px;
-  width: 100%;
-  font-size: 1.2rem;
-}
-
 .error {
   color: red;
   text-align: center;
