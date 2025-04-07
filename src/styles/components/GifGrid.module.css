@@ -1,7 +1,7 @@
 .gridContainer {
   position: relative;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-md);
   overflow: hidden;
 }
 
@@ -9,15 +9,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--spacing-xs);
 }
 
 .gridRow {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-sm);
   flex-wrap: nowrap;
-  margin-bottom: 1rem;
-  height: 180px;
+  margin-bottom: var(--spacing-sm);
+  height: var(--gif-size);
   overflow-x: auto;
   overflow-y: hidden;
   position: relative;
@@ -39,13 +39,13 @@
 }
 
 .gridRow:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  background-color: var(--overlay-medium);
+  border-radius: var(--border-radius);
 }
 
 .gridRow:hover {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  scrollbar-color: var(--overlay-medium) transparent;
 }
 
 .gridContainer::before {
@@ -88,14 +88,14 @@
 }
 
 .error {
-  color: red;
+  color: var(--accent-color);
   text-align: center;
-  padding: 1rem;
+  padding: var(--spacing-sm);
   width: 100%;
 }
 
 .noResults {
   text-align: center;
-  padding: 1rem;
+  padding: var(--spacing-sm);
   width: 100%;
 }

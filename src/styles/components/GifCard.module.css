@@ -1,9 +1,9 @@
 .gifItem {
   flex: 0 0 auto;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  height: 180px;
-  width: 180px;
+  height: var(--gif-size);
+  width: var(--gif-size);
   position: relative;
   background-color: var(--card-bg);
 }
@@ -13,7 +13,7 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity var(--transition-fast);
 }
 
 .gifImage.loaded {

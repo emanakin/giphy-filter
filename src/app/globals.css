@@ -1,9 +1,33 @@
 :root {
+  /* Color Scheme */
   --bg-color: #111111;
   --text-color: #ffffff;
   --accent-color: #ff4081;
   --input-bg: #222222;
   --card-bg: #333333;
+
+  /* Transparency */
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --overlay-medium: rgba(255, 255, 255, 0.3);
+  --overlay-strong: rgba(255, 255, 255, 0.5);
+
+  /* Sizing */
+  --container-max-width: 1200px;
+  --search-max-width: 600px;
+  --gif-size: 180px;
+  --border-radius: 8px;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+
+  /* Shadows */
+  --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
 }
 
 * {
