@@ -17,12 +17,10 @@ export default function GifGrid() {
     return <div className={styles.noResults}>No GIFs found</div>;
   }
 
-  const firstRowGifs = loading
-    ? placeholders.slice(0, 10)
-    : gifs.slice(0, Math.min(gifs.length, 10));
+  const firstRowGifs = loading ? placeholders.slice(0, 10) : gifs.slice(0, 10);
   const secondRowGifs = loading
     ? placeholders.slice(10, 20)
-    : gifs.slice(10, Math.min(gifs.length, 20));
+    : gifs.slice(10, 20);
 
   return (
     <div className={styles.gridContainer}>

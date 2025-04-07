@@ -15,10 +15,10 @@ export async function GET(request: NextRequest) {
     // Search endpoint
     url = `${GIPHY_BASE_URL}/search?api_key=${GIPHY_API_KEY}&q=${encodeURIComponent(
       query
-    )}&limit=${limit}&offset=${offset}&rating=g`;
+    )}&limit=${limit}&offset=${offset}&rating=r`;
   } else {
     // Trending endpoint
-    url = `${GIPHY_BASE_URL}/trending?api_key=${GIPHY_API_KEY}&limit=${limit}&offset=${offset}&rating=g`;
+    url = `${GIPHY_BASE_URL}/trending?api_key=${GIPHY_API_KEY}&limit=${limit}&offset=${offset}&rating=r`;
   }
 
   try {

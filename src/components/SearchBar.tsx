@@ -5,7 +5,7 @@ import { useGifs } from "@/context/GifContext";
 import styles from "@/styles/components/SearchBar.module.css";
 
 export default function SearchBar() {
-  const { setSearchQuery, fetchGifs, suggestions } = useGifs();
+  const { setSearchQuery, suggestions } = useGifs();
   const [inputValue, setInputValue] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -13,32 +13,33 @@ export default function SearchBar() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     setSearchQuery(inputValue);
-    fetchGifs(inputValue);
     setShowSuggestions(false);
   };
 
   const handleSuggestionClick = (suggestion: string) => {
     setInputValue(suggestion);
     setSearchQuery(suggestion);
-    fetchGifs(suggestion);
     setShowSuggestions(false);
   };
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node)
-      ) {
-        setShowSuggestions(false);
+    if (showSuggestions) {
+      function handleClickOutside(event: MouseEvent) {
+        if (
+          inputRef.current &&
+          !inputRef.current.contains(event.target as Node)
+        ) {
+          setShowSuggestions(false);
+        }
       }
-    }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+      document.addEventListener("mousedown", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [showSuggestions]);
 
   return (
     <div className={styles.searchContainer} ref={inputRef}>
